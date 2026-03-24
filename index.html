@@ -1,48 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abushahmaa | Portfolio</title>
+    <title>Abushaham Alisher Ansari | Full Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 text-gray-900 font-sans">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        accent: '#FFE500',
+                        accent2: '#00FF94',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Arial Black', 'Arial Bold', sans-serif;
+        }
 
-    <nav class="p-6 flex justify-between items-center bg-white shadow-sm sticky top-0 z-50">
-        <h1 class="text-xl font-bold tracking-tight">ABUSHAHMAA</h1>
-        <div class="space-x-6">
-            <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
-            <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+        .brutalist-shadow {
+            box-shadow: 8px 8px 0 0 #000;
+        }
+
+        .brutalist-shadow-sm {
+            box-shadow: 4px 4px 0 0 #000;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-black" x-data="{ mobileMenuOpen: false }">
+
+    <!-- Navigation -->
+    <nav class="bg-accent border-b-4 border-black sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-2xl font-black uppercase tracking-tight">
+                        ABUSHAHAM ANSARI
+                    </h1>
+                    <p class="text-sm font-bold mt-1">FULL STACK DEVELOPER</p>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home"
+                        class="font-bold uppercase hover:bg-black hover:text-white px-3 py-2 border-2 border-transparent hover:border-black transition">Home</a>
+                    <a href="#about"
+                        class="font-bold uppercase hover:bg-black hover:text-white px-3 py-2 border-2 border-transparent hover:border-black transition">About</a>
+                    <a href="#experience"
+                        class="font-bold uppercase hover:bg-black hover:text-white px-3 py-2 border-2 border-transparent hover:border-black transition">Experience</a>
+                    <a href="#projects"
+                        class="font-bold uppercase hover:bg-black hover:text-white px-3 py-2 border-2 border-transparent hover:border-black transition">Projects</a>
+                    <a href="#skills"
+                        class="font-bold uppercase hover:bg-black hover:text-white px-3 py-2 border-2 border-transparent hover:border-black transition">Skills</a>
+                    <a href="#contact"
+                        class="font-bold uppercase hover:bg-black hover:text-white px-3 py-2 border-2 border-transparent hover:border-black transition">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden border-4 border-black p-2 bg-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                        <path x-show="!mobileMenuOpen" stroke-linecap="square" stroke-linejoin="miter"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                        <path x-show="mobileMenuOpen" stroke-linecap="square" stroke-linejoin="miter"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div x-show="mobileMenuOpen" x-transition class="md:hidden pb-4 border-t-4 border-black mt-2">
+                <a href="#home" @click="mobileMenuOpen = false"
+                    class="block py-3 font-bold uppercase border-b-2 border-black hover:bg-black hover:text-white px-2">Home</a>
+                <a href="#about" @click="mobileMenuOpen = false"
+                    class="block py-3 font-bold uppercase border-b-2 border-black hover:bg-black hover:text-white px-2">About</a>
+                <a href="#experience" @click="mobileMenuOpen = false"
+                    class="block py-3 font-bold uppercase border-b-2 border-black hover:bg-black hover:text-white px-2">Experience</a>
+                <a href="#projects" @click="mobileMenuOpen = false"
+                    class="block py-3 font-bold uppercase border-b-2 border-black hover:bg-black hover:text-white px-2">Projects</a>
+                <a href="#skills" @click="mobileMenuOpen = false"
+                    class="block py-3 font-bold uppercase border-b-2 border-black hover:bg-black hover:text-white px-2">Skills</a>
+                <a href="#contact" @click="mobileMenuOpen = false"
+                    class="block py-3 font-bold uppercase hover:bg-black hover:text-white px-2">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <header class="py-20 px-6 text-center bg-white border-b">
-        <h2 class="text-5xl font-extrabold mb-4">Full Stack Developer</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-            I build robust backend systems and clean, responsive user interfaces. 
-            Specializing in modern frameworks and scalable architecture.
-        </p>
-        <div class="mt-8">
-            <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition">Get In Touch</a>
+    <!-- Hero Section -->
+    <section id="home" class="bg-white border-b-8 border-black py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl">
+                <h2 class="text-6xl md:text-8xl font-black mb-8 uppercase leading-none">
+                    ABUSHAHAM<br>ALISHER<br>ANSARI
+                </h2>
+                <div class="bg-black text-white px-8 py-6 inline-block border-4 border-black brutalist-shadow mb-8">
+                    <p class="text-2xl md:text-3xl font-black uppercase">
+                        FULL STACK DEVELOPER
+                    </p>
+                </div>
+                <p class="text-xl md:text-2xl font-bold max-w-2xl mb-8 border-l-8 border-black pl-6">
+                    4.5+ YEARS EXPERIENCE | BACKEND SPECIALIST | API DEVELOPMENT EXPERT
+                </p>
+                <div class="flex flex-wrap gap-4 mt-10">
+                    <a href="#contact"
+                        class="bg-accent text-black px-8 py-4 border-4 border-black font-black uppercase brutalist-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                        CONTACT ME
+                    </a>
+                    <a href="#projects"
+                        class="bg-accent2 text-black px-8 py-4 border-4 border-black font-black uppercase brutalist-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                        VIEW PROJECTS
+                    </a>
+                </div>
+            </div>
         </div>
-    </header>
-
-    <section id="projects" class="py-20 px-6 max-w-6xl mx-auto">
-        <h3 class="text-3xl font-bold mb-10 text-center">Featured Work</h3>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition">
-                <h4 class="text-xl font-bold mb-2">Project Name</h4>
-                <p class="text-gray-600 mb-4">A brief description of what this project does and the tech stack used (e.g., PHP, Laravel, Tailwind).</p>
-                <a href="#" class="text-blue-600 font-medium hover:underline">View Source &rarr;</a>
-            </div>
-            </div>
     </section>
 
-    <section id="contact" class="py-20 bg-gray-900 text-white text-center">
-        <h3 class="text-3xl font-bold mb-4">Let's Connect</h3>
-        <p class="mb-8 text-gray-400">Available for new opportunities and collaborations.</p>
-        <a href="mailto:your-email@example.com" class="text-2xl font-semibold border-b-2 border-blue-500 pb-1">your-email@example.com</a>
+    <!-- About/Summary Section -->
+    <section id="about" class="py-20 bg-accent2 border-b-8 border-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-5xl md:text-6xl font-black mb-12 uppercase border-b-8 border-black inline-block pb-4 pr-8">
+                ABOUT ME
+            </h3>
+            <div class="max-w-4xl bg-white border-8 border-black brutalist-shadow p-8 md:p-12">
+                <ul class="space-y-6">
+                    <li class="flex items-start border-l-4 border-black pl-4">
+                        <span class="font-bold text-lg leading-relaxed">PHP Laravel Developer with <span
+                                class="bg-accent px-2 py-1">4.5 YEARS OF EXPERIENCE</span> in backend development,
+                            building scalable and efficient web applications.</span>
+                    </li>
+                    <li class="flex items-start border-l-4 border-black pl-4">
+                        <span class="font-bold text-lg leading-relaxed">Strong expertise in <span
+                                class="bg-accent px-2 py-1">LARAVEL FRAMEWORK</span>, building scalable, secure, and
+                            high-performance applications.</span>
+                    </li>
+                    <li class="flex items-start border-l-4 border-black pl-4">
+                        <span class="font-bold text-lg leading-relaxed">Hands-on experience in <span
+                                class="bg-accent px-2 py-1">RESTFUL API DEVELOPMENT</span>, third-party API
+                            integrations, and mobile API support.</span>
+                    </li>
+                    <li class="flex items-start border-l-4 border-black pl-4">
+                        <span class="font-bold text-lg leading-relaxed">Experienced in <span
+                                class="bg-accent px-2 py-1">LARAVEL QUEUES, JOBS & CRON SCHEDULING</span> for background
+                            processing and performance optimization.</span>
+                    </li>
+                    <li class="flex items-start border-l-4 border-black pl-4">
+                        <span class="font-bold text-lg leading-relaxed">Proficient in <span
+                                class="bg-accent px-2 py-1">MYSQL & POSTGRESQL</span> with solid database design and
+                            optimization skills.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white border-b-8 border-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-5xl md:text-6xl font-black mb-12 uppercase border-b-8 border-black inline-block pb-4 pr-8">
+                EXPERIENCE
+            </h3>
+
+            <div class="space-y-8 max-w-5xl" x-data="{ openExp: null }">
+
+                <!-- Experience 1 -->
+                <div class="bg-accent border-8 border-black brutalist-shadow">
+                    <div class="p-6 md:p-8">
+                        <div
+                            class="flex flex-col md:flex-row md:items-start md:justify-between mb-4 pb-4 border-b-4 border-black">
+                            <div>
+                                <h4 class="text-2xl md:text-3xl font-black uppercase">Senior Laravel & Vue.js Developer
+                                </h4>
+                                <p class="text-xl font-black mt-2">WEBLIANZ SOLUTIONS</p>
+                            </div>
+                            <div class="mt-2 md:mt-0">
+                                <span class="bg-black text-white px-4 py-2 font-black uppercase text-sm">MAR 2025 - FEB
+                                    2026</span>
+                            </div>
+                        </div>
+
+                        <button @click="openExp = openExp === 1 ? null : 1"
+                            class="bg-black text-white px-6 py-3 font-black uppercase border-4 border-black brutalist-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all mb-4">
+                            <span x-text="openExp === 1 ? '▼ HIDE DETAILS' : '▶ SHOW DETAILS'"></span>
+                        </button>
+
+                        <div x-show="openExp === 1" x-transition
+                            class="space-y-3 font-bold border-t-4 border-black pt-4">
+                            <p class="border-l-4 border-black pl-3">• Senior Full-Stack Developer specializing in
+                                Laravel, Vue.js, and Strapi</p>
+                            <p class="border-l-4 border-black pl-3">• Developed and maintained dynamic, scalable web
+                                applications and custom CMS/CRM systems</p>
+                            <p class="border-l-4 border-black pl-3">• Integrated Strapi CMS, Webhooks, and WhatConvertor
+                                APIs for real-time data flow</p>
+                            <p class="border-l-4 border-black pl-3">• Converted Figma UI designs into modular, reusable
+                                Vue.js components</p>
+                            <p class="border-l-4 border-black pl-3">• Built Car CMS system for managing product
+                                listings, inventory, and lead forms</p>
+                            <p class="border-l-4 border-black pl-3">• Utilized Laravel Livewire and RESTful APIs for
+                                real-time updates</p>
+                            <p class="border-l-4 border-black pl-3">• Connected Facebook Conversion API with lead forms
+                                and CRM modules</p>
+                            <p class="border-l-4 border-black pl-3">• Used GitHub Copilot AI for rapid UI development
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="bg-white border-8 border-black brutalist-shadow">
+                    <div class="p-6 md:p-8">
+                        <div
+                            class="flex flex-col md:flex-row md:items-start md:justify-between mb-4 pb-4 border-b-4 border-black">
+                            <div>
+                                <h4 class="text-2xl md:text-3xl font-black uppercase">PHP Developer</h4>
+                                <p class="text-xl font-black mt-2">WE4SOFT SOLUTION</p>
+                            </div>
+                            <div class="mt-2 md:mt-0">
+                                <span class="bg-black text-white px-4 py-2 font-black uppercase text-sm">JUN 2021 - NOV
+                                    2024</span>
+                            </div>
+                        </div>
+
+                        <button @click="openExp = openExp === 2 ? null : 2"
+                            class="bg-black text-white px-6 py-3 font-black uppercase border-4 border-black brutalist-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all mb-4">
+                            <span x-text="openExp === 2 ? '▼ HIDE DETAILS' : '▶ SHOW DETAILS'"></span>
+                        </button>
+
+                        <div x-show="openExp === 2" x-transition
+                            class="space-y-3 font-bold border-t-4 border-black pt-4">
+                            <p class="border-l-4 border-black pl-3">• 3 years work experience as PHP Developer</p>
+                            <p class="border-l-4 border-black pl-3">• Extensive experience in building and integrating
+                                APIs using Laravel and PHP</p>
+                            <p class="border-l-4 border-black pl-3">• Proficient in CodeIgniter, WordPress, and Laravel
+                                frameworks</p>
+                            <p class="border-l-4 border-black pl-3">• Involved in projects: NeevJivan Foundation,
+                                bramhatej.com, Sanjay Corporation CRM</p>
+                            <p class="border-l-4 border-black pl-3">• Project owner for All in One, Shopimart using
+                                Laravel, Vue.js, and Livewire</p>
+                            <p class="border-l-4 border-black pl-3">• Responsive Web Development using TALL stack
+                                (Tailwind, Alpine.js, Laravel, Livewire)</p>
+                            <p class="border-l-4 border-black pl-3">• WordPress theme and plugin customization</p>
+                            <p class="border-l-4 border-black pl-3">• SEO & Hosting Management with Yoast SEO and Google
+                                Site Kit</p>
+                            <p class="border-l-4 border-black pl-3">• Led role-based CRM development using PHP and
+                                CodeIgniter</p>
+                            <p class="border-l-4 border-black pl-3">• Designed and implemented PHP APIs for mobile
+                                applications</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-accent border-b-8 border-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-5xl md:text-6xl font-black mb-12 uppercase border-b-8 border-black inline-block pb-4 pr-8">
+                PROJECTS
+            </h3>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl">
+
+                <!-- Project 1: Cencal Tinting -->
+                <div class="bg-white border-8 border-black brutalist-shadow">
+                    <div class="bg-black text-white p-4 border-b-8 border-black">
+                        <h4 class="text-2xl font-black uppercase">CENCAL TINTING</h4>
+                        <p class="font-bold text-sm mt-1 text-accent">USA-BASED SAAS PROJECT</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-2 mb-6 font-bold text-sm">
+                            <li class="border-l-4 border-black pl-3">• Admin dashboard development</li>
+                            <li class="border-l-4 border-black pl-3">• Figma UI implementation</li>
+                            <li class="border-l-4 border-black pl-3">• Direct client communication via Slack</li>
+                            <li class="border-l-4 border-black pl-3">• Bug fixes & performance optimization</li>
+                        </ul>
+                        <a href="https://app.cencaltinting.com" target="_blank"
+                            class="inline-block bg-accent text-black px-6 py-3 border-4 border-black font-black uppercase brutalist-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                            VIEW PROJECT →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Neev Jivan -->
+                <div class="bg-white border-8 border-black brutalist-shadow">
+                    <div class="bg-black text-white p-4 border-b-8 border-black">
+                        <h4 class="text-2xl font-black uppercase">NEEV JIVAN</h4>
+                        <p class="font-bold text-sm mt-1 text-accent2">INDIA-BASED DONATION PLATFORM</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-2 mb-6 font-bold text-sm">
+                            <li class="border-l-4 border-black pl-3">• Donation management system</li>
+                            <li class="border-l-4 border-black pl-3">• Role & permission management</li>
+                            <li class="border-l-4 border-black pl-3">• Reusable components development</li>
+                            <li class="border-l-4 border-black pl-3">• Frontend theme conversion to Laravel</li>
+                        </ul>
+                        <a href="https://neevjivan.org" target="_blank"
+                            class="inline-block bg-accent2 text-black px-6 py-3 border-4 border-black font-black uppercase brutalist-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                            VIEW PROJECT →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Sanjay Corporation -->
+                <div class="bg-white border-8 border-black brutalist-shadow">
+                    <div class="bg-black text-white p-4 border-b-8 border-black">
+                        <h4 class="text-2xl font-black uppercase">SANJAY CORPORATION</h4>
+                        <p class="font-bold text-sm mt-1 text-accent">REAL ESTATE PLATFORM - MALDIVES</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-2 mb-6 font-bold text-sm">
+                            <li class="border-l-4 border-black pl-3">• Real estate management backend</li>
+                            <li class="border-l-4 border-black pl-3">• Cron jobs for automated tasks</li>
+                            <li class="border-l-4 border-black pl-3">• Complex query optimization</li>
+                            <li class="border-l-4 border-black pl-3">• SMS & Email notification system</li>
+                        </ul>
+                        <a href="https://sanjaycorporation.in" target="_blank"
+                            class="inline-block bg-accent text-black px-6 py-3 border-4 border-black font-black uppercase brutalist-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                            VIEW PROJECT →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Bramhatej -->
+                <div class="bg-white border-8 border-black brutalist-shadow">
+                    <div class="bg-black text-white p-4 border-b-8 border-black">
+                        <h4 class="text-2xl font-black uppercase">BRAMHATEJ</h4>
+                        <p class="font-bold text-sm mt-1 text-accent2">CMS-BASED RELIGIOUS PLATFORM</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-2 mb-6 font-bold text-sm">
+                            <li class="border-l-4 border-black pl-3">• Hindu religious website CMS</li>
+                            <li class="border-l-4 border-black pl-3">• Content management modules</li>
+                            <li class="border-l-4 border-black pl-3">• Dynamic pages & events system</li>
+                            <li class="border-l-4 border-black pl-3">• Media content management</li>
+                        </ul>
+                        <a href="https://bramhatej.com" target="_blank"
+                            class="inline-block bg-accent2 text-black px-6 py-3 border-4 border-black font-black uppercase brutalist-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                            VIEW PROJECT →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 5: Blue Wave India -->
+                <div class="bg-white border-8 border-black brutalist-shadow">
+                    <div class="bg-black text-white p-4 border-b-8 border-black">
+                        <h4 class="text-2xl font-black uppercase">BLUE WAVE INDIA</h4>
+                        <p class="font-bold text-sm mt-1 text-accent">INDIA-BASED WEB PLATFORM</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-2 mb-6 font-bold text-sm">
+                            <li class="border-l-4 border-black pl-3">• Full-stack web development</li>
+                            <li class="border-l-4 border-black pl-3">• Laravel backend architecture</li>
+                            <li class="border-l-4 border-black pl-3">• Dynamic content management</li>
+                            <li class="border-l-4 border-black pl-3">• Responsive UI implementation</li>
+                        </ul>
+                        <a href="https://bluewaveindia.com" target="_blank"
+                            class="inline-block bg-accent text-black px-6 py-3 border-4 border-black font-black uppercase brutalist-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                            VIEW PROJECT →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 6: IXense -->
+                <div class="bg-white border-8 border-black brutalist-shadow">
+                    <div class="bg-black text-white p-4 border-b-8 border-black">
+                        <h4 class="text-2xl font-black uppercase">IXENSE ERP</h4>
+                        <p class="font-bold text-sm mt-1 text-accent2">FULL ERP SYSTEM - INDONESIA</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-2 mb-6 font-bold text-sm">
+                            <li class="border-l-4 border-black pl-3">• QuickBooks/Zoho Books alternative</li>
+                            <li class="border-l-4 border-black pl-3">• Debit & credit accounting system</li>
+                            <li class="border-l-4 border-black pl-3">• Payroll management module</li>
+                            <li class="border-l-4 border-black pl-3">• Financial reporting & automation</li>
+                        </ul>
+                        <div
+                            class="inline-block bg-gray-300 text-gray-600 px-6 py-3 border-4 border-black font-black uppercase">
+                            PRIVATE PROJECT
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white border-b-8 border-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-5xl md:text-6xl font-black mb-12 uppercase border-b-8 border-black inline-block pb-4 pr-8">
+                SKILLS
+            </h3>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl">
+
+                <!-- Frontend -->
+                <div class="bg-accent2 border-8 border-black brutalist-shadow p-6">
+                    <h4 class="text-2xl font-black uppercase mb-4 border-b-4 border-black pb-3">FRONTEND</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">HTML</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">CSS</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">JAVASCRIPT</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">BOOTSTRAP</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">JQUERY</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">AJAX</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">ALPINE.JS</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">TAILWIND</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">VUE.JS</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">REACT.JS</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">PINIA</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">VUEX</span>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="bg-accent border-8 border-black brutalist-shadow p-6">
+                    <h4 class="text-2xl font-black uppercase mb-4 border-b-4 border-black pb-3">BACKEND</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">PHP</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">LARAVEL</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">LIVEWIRE</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">FILAMENT</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">INERTIA.JS</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">CODEIGNITER</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">REST API</span>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="bg-white border-8 border-black brutalist-shadow p-6">
+                    <h4 class="text-2xl font-black uppercase mb-4 border-b-4 border-black pb-3">DATABASE</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-accent2 border-4 border-black font-black text-sm">MYSQL</span>
+                        <span class="px-4 py-2 bg-accent2 border-4 border-black font-black text-sm">POSTGRESQL</span>
+                        <span class="px-4 py-2 bg-accent2 border-4 border-black font-black text-sm">GRAPHQL</span>
+                        <span class="px-4 py-2 bg-accent2 border-4 border-black font-black text-sm">MONGODB</span>
+                        <span class="px-4 py-2 bg-accent2 border-4 border-black font-black text-sm">REDIS</span>
+                    </div>
+                </div>
+
+                <!-- DevOps -->
+                <div class="bg-accent2 border-8 border-black brutalist-shadow p-6">
+                    <h4 class="text-2xl font-black uppercase mb-4 border-b-4 border-black pb-3">DEVOPS & TOOLS</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">GIT</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">GITHUB</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">GITLAB</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">DOCKER</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">CI/CD</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">AWS</span>
+                    </div>
+                </div>
+
+                <!-- APIs -->
+                <div class="bg-accent border-8 border-black brutalist-shadow p-6">
+                    <h4 class="text-2xl font-black uppercase mb-4 border-b-4 border-black pb-3">THIRD-PARTY APIs</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">FACEBOOK API</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">TWILIO</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">RAZORPAY</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">STRIPE</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">SENDGRID</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">FIREBASE</span>
+                        <span class="px-4 py-2 bg-white border-4 border-black font-black text-sm">SHIPROCKET</span>
+                    </div>
+                </div>
+
+                <!-- AI Tools -->
+                <div class="bg-white border-8 border-black brutalist-shadow p-6">
+                    <h4 class="text-2xl font-black uppercase mb-4 border-b-4 border-black pb-3">AI TOOLS</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-accent border-4 border-black font-black text-sm">GITHUB COPILOT</span>
+                        <span class="px-4 py-2 bg-accent border-4 border-black font-black text-sm">CURSOR AI</span>
+                        <span class="px-4 py-2 bg-accent border-4 border-black font-black text-sm">CHATGPT API</span>
+                        <span class="px-4 py-2 bg-accent border-4 border-black font-black text-sm">CLAUDE.AI</span>
+                        <span class="px-4 py-2 bg-accent border-4 border-black font-black text-sm">GEMINI AI</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-black text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-5xl md:text-6xl font-black mb-12 uppercase border-b-8 border-accent inline-block pb-4 pr-8">
+                CONTACT
+            </h3>
+
+            <div class="max-w-3xl">
+                <div class="space-y-6">
+
+                    <!-- Email -->
+                    <div class="bg-white text-black border-8 border-white brutalist-shadow p-6">
+                        <p class="text-sm font-black uppercase mb-2">EMAIL</p>
+                        <a href="mailto:ansariabushama@gmail.com"
+                            class="text-2xl font-black hover:text-white hover:bg-black px-2 py-1 inline-block transition">
+                            ansariabushama@gmail.com
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t-8 border-black py-8 text-center">
+        <p class="font-black uppercase text-lg">© 2026 ABUSHAHAM ALISHER ANSARI</p>
+        <p class="font-bold mt-2">BUILT WITH BRUTALIST DESIGN</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div x-data="{ showScroll: false }" @scroll.window="showScroll = window.pageYOffset > 300" x-show="showScroll"
+        x-transition class="fixed bottom-8 right-8 z-50">
+        <button @click="window.scrollTo({top: 0, behavior: 'smooth'})"
+            class="bg-accent text-black w-16 h-16 border-4 border-black font-black text-2xl brutalist-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+            ↑
+        </button>
+    </div>
 
 </body>
+
 </html>
